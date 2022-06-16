@@ -31,6 +31,8 @@
                    </div>
                </div>
            </div>
+           <a href="#heroSlider" class="carousel-control-prev" data-bs-slide="prev"><i class="carousel-control-prev-icon"></i></a>
+           <a href="#heroSlider" class="carousel-control-next" data-bs-slide="next"><i class="carousel-control-next-icon"></i></a>
        </div>
     </section>
     <section class="">
@@ -159,7 +161,7 @@
             </div>
         </div>
     </section>
-    <section class="mb-5">
+    <section class="mb-5 py-3">
         <div class="container-fluid bg-secondary py-2">
             <h2 class="text-white text-center">Our Instructor Info</h2>
         </div>
