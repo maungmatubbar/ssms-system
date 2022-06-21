@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Admin | Login</title>
+    <title>Admin | Teacher Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -30,7 +30,7 @@
                             <div class="col-7">
                                 <div class="text-primary p-4">
                                     <h5 class="text-primary">Welcome Back !</h5>
-                                    <p>Sign in to continue to Skote.</p>
+                                    <p>Sign in to continue to Teacher.</p>
                                 </div>
                             </div>
                             <div class="col-5 align-self-end">
@@ -47,15 +47,23 @@
                                     </span>
                                 </div>
                             </a>
+                            @if(Session::has('message'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ Session::get('message') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                         </div>
                         <div class="p-2">
-                            <form class="form-horizontal" action="{{ route('login') }}" method="post">
+                            <form class="form-horizontal" action="{{ route('teacher.login-check') }}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label for="username">Email</label>
                                     <input type="email" name="email" class="form-control  @error('email') is-invalid @enderror" id="email" placeholder="Enter email" value="{{ old('email') }}" required autofocus>
                                     @error('email')
-                                        <span class="invalid-feedback">
+                                    <span class="invalid-feedback">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror

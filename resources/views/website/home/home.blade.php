@@ -41,50 +41,19 @@
         </div>
         <div class="container py-5">
             <div class="row">
+                @foreach($courses as $course)
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="{{ asset('/') }}website/img/blog1.jpg" class="card-img h-250" alt="">
+                        <img src="{{ asset($course->image) }}" class="card-img h-250" alt="">
                         <div class="card-body">
-                            <h5>Web Develoment</h5>
-                            <p>Course Fee: Tk. 25000</p>
+                            <h5><a href="{{ route('website.course-detail',[$course->id]) }}" class="text-decoration-none text-muted">{{ $course->title }}</a></h5>
+                            <p class="text-muted">Course Fee: Tk.{{ $course->fee }}</p>
                             <hr/>
-                            <a href="" class="btn btn-outline-primary">Read More</a>
+                            <a href="{{ route('website.course-detail',[$course->id]) }}" class="btn btn-outline-primary">Read More</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <img src="{{ asset('/') }}website/img/ng-ex.jpg" class="card-img h-250" alt="">
-                        <div class="card-body">
-                            <h5>Social Media Marketing</h5>
-                            <p>Course Fee: Tk. 10000</p>
-                            <hr/>
-                            <a href="" class="btn btn-outline-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <img src="{{ asset('/') }}website/img/2.jpg" class="card-img h-250" alt="">
-                        <div class="card-body">
-                            <h5>Web Design</h5>
-                            <p>Course Fee: Tk. 15000</p>
-                            <hr/>
-                            <a href="" class="btn btn-outline-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <img src="{{ asset('/') }}website/img/blog2.jpg" class="card-img h-250" alt="">
-                        <div class="card-body">
-                            <h5>Android Develoment</h5>
-                            <p>Course Fee: Tk. 20000</p>
-                            <hr/>
-                            <a href="" class="btn btn-outline-primary">Read More</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -94,12 +63,15 @@
         </div>
         <div class="container py-5">
             <div class="row">
+                @foreach($teachers as $teacher)
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="{{ asset('/') }}website/img/member1.png" class="card-img h-250" alt="">
+                        <img src="{{ asset($teacher->image) }}" class="card-img h-250" alt="">
                         <div class="card-body">
-                            <h5>Mr. Hridoy Khan</h5>
-                            <p>Web Development Specailist</p>
+                            <h5>{{  $teacher->name }}</h5>
+                            <p class="mb-0">{{ $teacher->designation }}</p>
+                            <p class="mb-0">Email: {{ $teacher->email }}</p>
+                            <p>Mobile: {{ $teacher->mobile }}</p>
                             <hr/>
                             <ul class="nav border-0">
                                 <li><a href="" class="nav-link text-info"><i class="fa-brands fa-facebook-square"></i></a></li>
@@ -110,54 +82,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <img src="{{ asset('/') }}website/img/member2.png" class="card-img h-250" alt="">
-                        <div class="card-body">
-                            <h5>Mr. Hridoy Khan</h5>
-                            <p>Web Development Specailist</p>
-                            <hr/>
-                            <ul class="nav border-0">
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-facebook-square"></i></a></li>
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-twitter-square"></i></a></li>
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-linkedin"></i></a></li>
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-instagram-square"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <img src="{{ asset('/') }}website/img/member3.png" class="card-img h-250" alt="">
-                        <div class="card-body">
-                            <h5>Mr. Hridoy Khan</h5>
-                            <p>Web Development Specailist</p>
-                            <hr/>
-                            <ul class="nav border-0">
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-facebook-square"></i></a></li>
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-twitter-square"></i></a></li>
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-linkedin"></i></a></li>
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-instagram-square"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <div class="card">
-                        <img src="{{ asset('/') }}website/img/3.png" class="card-img h-250" alt="">
-                        <div class="card-body">
-                            <h5>Mr. Hridoy Khan</h5>
-                            <p>Web Development Specailist</p>
-                            <hr/>
-                            <ul class="nav border-0">
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-facebook-square"></i></a></li>
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-twitter-square"></i></a></li>
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-linkedin"></i></a></li>
-                                <li><a href="" class="nav-link text-info"><i class="fa-brands fa-instagram-square"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

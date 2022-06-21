@@ -12,6 +12,8 @@
     <!-- DataTables -->
     <link href="{{ asset('/') }}assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/') }}assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <!-- Summernote css -->
+    <link href="{{ asset('/') }}assets/libs/summernote/summernote-bs4.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Responsive datatable examples -->
     <link href="{{ asset('/') }}assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -59,9 +61,9 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="{{ asset('/') }}assets/images/users/avatar-1.jpg"
+                        <img class="rounded-circle header-profile-user" src="{{ asset(Session::get('teacher_image')) }}"
                              alt="Header Avatar">
-                        <span class="d-none d-xl-inline-block ml-1">{{ Auth::user()->name }}</span>
+                        <span class="d-none d-xl-inline-block ml-1">{{ Session::get('teacher_name') }}</span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
@@ -71,8 +73,8 @@
                         <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
                         <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle mr-1"></i> Lock screen</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger" href="#" onclick="event.preventDefault();document.getElementById('logoutForm').submit();"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
-                        <form action="{{ route('logout') }}" id="logoutForm" method="post">
+                        <a class="dropdown-item text-danger" href="#" onclick="event.preventDefault();document.getElementById('logoutTecherForm').submit();"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+                        <form action="{{ route('teacher.logout') }}" id="logoutTecherForm" method="post">
                             @csrf
                         </form>
                     </div>
@@ -81,7 +83,7 @@
         </div>
     </header>
     <!-- ========== Left Sidebar Start ========== -->
-    @include('admin.includes.sidebar_menu')
+@include('teacher.includes.sidebar_menu')
 <!-- Left Sidebar End -->
 
     <!-- ============================================================== -->
@@ -280,6 +282,8 @@
 <script src="{{ asset('/') }}assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
 <script src="{{ asset('/') }}assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="{{ asset('/') }}assets/libs/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+<!-- Summernote js -->
+
 
 <!-- Responsive examples -->
 <script src="{{ asset('/') }}assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
@@ -287,5 +291,9 @@
 
 <!-- Datatable init js -->
 <script src="{{ asset('/') }}assets/js/pages/datatables.init.js"></script>
+<script src="{{ asset('/') }}assets/libs/summernote/summernote-bs4.min.js"></script>
+<script src="{{ asset('/') }}assets/js/pages/form-editor.init.js"></script>
+
+
 </body>
 </html>

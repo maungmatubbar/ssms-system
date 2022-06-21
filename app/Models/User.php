@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -18,6 +19,11 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    private static $user;
+    private static $extension;
+    private static $imageName;
+    private static $directory;
+    private static $imageUrl;
     /**
      * The attributes that are mass assignable.
      *
@@ -58,4 +64,54 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public static function getImageUrl($image)
+    {
+        self::$extension = $image->getClientOriginalExtension();
+        self::$imageName = Str::random('10').'.'.self::$extension;//Str::random('10'),rand(1000,10000);
+        self::$directory = 'user_image/';
+        $image->move(self::$directory,self::$imageName);
+        self::$imageUrl = self::$directory.self::$imageName;
+        return self::$imageUrl;
+    }
+    public static function newUser($request)
+    {
+        self::$user = new User();
+
+        self::$user->name = $request->name;
+        self::$user->email = $request->email;
+        self::$user->password = bcrypt($request->password);
+        self::$user->image = self::getImageUrl($request->file('image'));
+        self::$user->save();
+    }
+    public static function updateUser($request,$id)
+    {
+        self::$user =  User::find($id);
+        if($request->file('image'))
+        {
+            if(file_exists(self::$user->image))
+            {
+                unlink(self::$user->image);
+            }
+            self::$imageUrl = self::getImageUrl($request->file('image'));
+        }
+        else
+        {
+            self::$imageUrl = self::$user->image;
+        }
+        self::$user->name = $request->name;
+        self::$user->email = $request->email;
+        self::$user->password = bcrypt($request->password);
+        self::$user->image = self::$imageUrl;
+        self::$user->save();
+    }
+    public static function deleteUser($id)
+    {
+        self::$user =  User::find($id);
+        if(file_exists(self::$user->image))
+        {
+            unlink(self::$user->image);
+        }
+        self::$user->delete();
+    }
 }

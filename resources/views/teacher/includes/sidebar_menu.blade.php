@@ -7,7 +7,7 @@
                 <li class="menu-title">Apps</li>
 
                 <li>
-                    <a href="{{  route('dashboard') }}" class="waves-effect">
+                    <a href="{{ route('teacher.deshboard') }}" class="waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span>Dashboards</span>
                     </a>
@@ -16,49 +16,39 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-layout"></i>
-                        <span>Teacher Module</span>
+                        <span>Course Module</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('teacher.add') }}">Add Teacher</a></li>
-                        <li><a href="{{  route('teacher.manage') }}">Manage Teacher</a></li>
+                        <li><a href="{{ route('course.add') }}">Add Course</a></li>
+                        <li><a href="{{ route('course.manage') }}">Manage Course</a></li>
                     </ul>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-user"></i>
-                        <span>Admin User Module</span>
+                        <span>Enroll Module</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('user.add') }}">Add User</a></li>
-                        <li><a href="{{  route('user.manage') }}">Manage User</a></li>
+                        <li><a href="">Manage Enroll</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-bitcoin"></i>
-                        <span>Student Module</span>
+                        <span>Result Module</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="crypto-wallet.html">Manage Student</a></li>
+                        <li><a href="crypto-wallet.html">Manage Result</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-book-content"></i>
-                        <span>Course Module</span>
+                        <span>Note Module</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('admin.manage.course') }}">Manage Course</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-receipt"></i>
-                        <span>Enroll Module</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="invoices-list.html">Manage Enroll</a></li>
+                        <li><a href="email-inbox.html">Manage Note</a></li>
                     </ul>
                 </li>
             </ul>
