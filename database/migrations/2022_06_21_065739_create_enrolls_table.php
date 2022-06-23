@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('enroll_timestamp');
             $table->integer('payment_type');
             $table->float('payment_amount')->default(0);
+            $table->string('enroll_status')->default('pending');
             $table->timestamps();
         });
     }

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Website\EnrollController;
+use App\Http\Controllers\Website\StudentCourseController;
+use App\Http\Controllers\Website\StudentAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TeacherController;
 use App\Http\Controllers\Admin\UserController;
@@ -28,7 +30,10 @@ Route::get('/all-courses',[HomeController::class,'course'])->name('course');
 Route::get('/login-registration',[HomeController::class,'login'])->name('login-registration');
 Route::get('/website-course-detail/{id}',[HomeController::class,'detail'])->name('website.course-detail');
 Route::get('/enroll/{id}',[EnrollController::class,'index'])->name('enroll');
-Route::get('/create-enroll/{id}',[EnrollController::class,'createEnroll'])->name('enroll.confirm');
+Route::post('/confirm-enroll/{id}',[EnrollController::class,'createEnroll'])->name('enroll.confirm');
+Route::get('/student-logout',[StudentAuthController::class,'logout'])->name('student.logout');
+
+Route::get('/course-registration-detail/{id}',[StudentCourseController::class,'detail'])->name('registration.details');
 
 //Teacher Start Dashboard
 Route::get('/teacher-login',[TeacherAuthController::class,'login'])->name('teacher.login');
